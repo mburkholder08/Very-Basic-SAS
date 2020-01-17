@@ -1,0 +1,33 @@
+data smalldat3;
+infile datalines;
+input name $ age weight;
+datalines;
+tom 32 180
+jerry 28 175
+lisa 27 140
+barry 24 210
+amanda 30 110
+;
+RUN;
+
+ods listing;
+
+PROC print data = smalldat3;
+var name age weight;
+RUN;
+
+PROC means data = smalldat3;
+var age;
+run;
+
+PROC means data = smalldat3;
+var height;
+run;
+
+PROC SORT data = smalldat3 OUT = Sorted_data;
+BY weight;
+RUN;
+
+PROC print data = Sorted_data;
+RUN;
+
